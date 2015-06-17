@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Focus Conferences</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/themes/focus.css" />
+        <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="css/vendor/jquery.mobile.structure-1.4.5.min.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div data-role="page" id="delegates-page">
+            <div data-role="header" data-position="fixed" data-add-back-btn="true">
+                <h1>Delegate Details</h1>
+            </div><!-- /header -->
+            <div role="main" class="ui-content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <div class="ui-body">
+                            <img src="images/event-logo.png" style="max-width:100%;" />
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <div class="ui-body">
+                            <img src="images/focus-education.png" style="max-width:100%;" />
+                        </div>
+                    </div>
+                </div>
+                <div data-role="popup" id="popup-message" data-overlay-theme="b">
+                    <div data-role="header" id="popup-message-header"><h3></h3></div>
+                    <div data-role="content" id="popup-message-content"><p></p><a href="#" data-role="button" data-inline="true" data-rel="back">OK</a></div>
+                </div>
+                <div id="conference" style="display:none;">
+                    <h2>Add Delegates to "<span id="name"></span>"</h2>
+                    <p>Please select the delegates from your organisation to attend this event</p>
+                    <p>You can edit delegate information using Edit Delegate button in the list below or to create a new delegate click the Add Delegate button below</p>                    
+                </div>
+                <div id="delegates" style="display:none;">
+                    <form id="delegates-form" class="ui-body" data-ajax="false">                        
+                        <div class="ui-field-contain">
+                            <fieldset data-role="controlgroup" id="delegates-control-group"></fieldset>
+                        </div>
+                        <button type="submit" id="submit" name="submit" class="ui-btn">Confirm Booking</button>
+                    </form>
+                </div>
+            </div><!-- /content -->
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="index.html" data-icon="calendar">Home</a></li>
+                        <li><a href="#" data-icon="bars" class="ui-btn-active">Conferences</a></li>
+                        <li><a href="speakers.html" data-icon="user">Speakers</a></li>
+                        <li><a href="share.html" data-icon="action">Share</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+        </div><!-- /page -->
+    </body>
+</html>

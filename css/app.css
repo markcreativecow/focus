@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    /* background: #ffffff;
+    background: -moz-linear-gradient(top, #ffffff 0%, #c8c8c8 35%, #6a6a6a 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(35%,#c8c8c8), color-stop(100%,#6a6a6a));
+    background: -webkit-linear-gradient(top, #ffffff 0%,#c8c8c8 35%,#6a6a6a 100%);
+    background: -o-linear-gradient(top, #ffffff 0%,#c8c8c8 35%,#6a6a6a 100%);
+    background: -ms-linear-gradient(top, #ffffff 0%,#c8c8c8 35%,#6a6a6a 100%);
+    background: linear-gradient(to bottom, #ffffff 0%,#c8c8c8 35%,#6a6a6a 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#6a6a6a',GradientType=0 ); */
+}
+.ui-grid-a .ui-block-a {
+    width: 65%
+}
+.ui-grid-a .ui-block-b {
+    width: 35%;
+}
+.ui-collapsible-content {
+    padding: 0 0 !important;
+}
+.ui-table-reflow.ui-responsive {
+    display: table !important;
+}
+#delegates-form .ui-controlgroup-controls {
+    width: 100%;
+}
+#confirmed-table,
+#company-table,
+#event-table,
+#conference-table,
+#delegates-table {
+    border: 1px solid #ECECEC;
+}
+#confirmed-table thead tr th,
+#company-table thead tr th,
+#event-table thead tr th,
+#conference-table thead tr th,
+#delegates-table thead tr th {
+    margin: 0;
+    padding: 0;
+}
+#delegate-add label span,
+#delegate-edit label span {
+    color: #FF0000;
+}
+.ui-btn-share {
+    color: #436BA5 !important;
+    text-align: left;
+}

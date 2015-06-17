@@ -1,0 +1,104 @@
+/* CSS Document */
+#calendar {
+    padding: 0;
+    margin: 20px 0 0;
+    /* margin: -15px -15px 0 -15px; */
+    display: block;
+}
+#calendar table {
+    margin: 0 0 20px;
+    width: 100%;
+    color: #333;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+#calendar .ui-listview {
+    margin: 0;
+}
+#calendar th {
+    padding: .2em 0;
+    text-align: center;
+}
+#calendar th.header {
+    background: transparent;
+    border: none;
+    font-size: 100%;
+    line-height: 33px;
+}
+#calendar th.header span {
+    color: #436BA5;
+    text-shadow: none;
+}
+#calendar table thead tr th {
+    border: none;
+    color: #666666;
+    font-size: 80%;
+    text-shadow: none;
+    text-transform: uppercase;
+    background: #eeeeee;
+    background: -moz-linear-gradient(top, #eeeeee 0%, #999999 90%, #999999 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(90%,#999999), color-stop(100%,#999999));
+    background: -webkit-linear-gradient(top, #eeeeee 0%,#999999 90%,#999999 100%);
+    background: -o-linear-gradient(top, #eeeeee 0%,#999999 90%,#999999 100%);
+    background: -ms-linear-gradient(top, #eeeeee 0%,#999999 90%,#999999 100%);
+    background: linear-gradient(to bottom, #eeeeee 0%,#999999 90%,#999999 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#999999',GradientType=0 );
+}
+#calendar .previous-btn {
+    float: left;
+    margin: .2em .5em;
+}
+#calendar .next-btn {
+    float: right;
+    margin: .2em .5em;
+}
+#calendar td {
+    text-align: right;
+    padding: 0;
+}
+#calendar td.darker {
+    opacity: 0.3;
+}
+#calendar td a {
+    border: 0;
+    color: #686a6e;
+    margin: 0;
+    padding: 0.5em 0.5em;
+    text-align: right;
+}
+#calendar td span {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+#calendar .importance-1:not(.ui-btn-active) {
+    color: #FFFFFF;
+    background: #0f4884;
+    background: -moz-radial-gradient(center, ellipse cover, #0f4884 0%, #07223e 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#0f4884), color-stop(100%,#07223e));
+    background: -webkit-radial-gradient(center, ellipse cover, #0f4884 0%,#07223e 100%);
+    background: -o-radial-gradient(center, ellipse cover, #0f4884 0%,#07223e 100%);
+    background: -ms-radial-gradient(center, ellipse cover, #0f4884 0%,#07223e 100%);
+    background: radial-gradient(ellipse at center, #0f4884 0%,#07223e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f4884', endColorstr='#07223e',GradientType=1 );
+    text-shadow: 0 -1px 0 #000;
+}
+#calendar .importance-2:not(.ui-btn-active) {
+    color: #FFFFFF;
+    background: #0f4884;
+    background: -moz-radial-gradient(center, ellipse cover, #0f4884 0%, #07223e 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#0f4884), color-stop(100%,#07223e));
+    background: -webkit-radial-gradient(center, ellipse cover, #0f4884 0%,#07223e 100%);
+    background: -o-radial-gradient(center, ellipse cover, #0f4884 0%,#07223e 100%);
+    background: -ms-radial-gradient(center, ellipse cover, #0f4884 0%,#07223e 100%);
+    background: radial-gradient(ellipse at center, #0f4884 0%,#07223e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f4884', endColorstr='#07223e',GradientType=1 );
+    text-shadow: 0 -1px 0 #000;
+} 
+#calendar .ui-btn-today {
+    background-color: #DDDDDD;
+    color: #686a6e;
+    text-shadow: 0 -1px 0 #FFF;
+}

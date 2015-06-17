@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Focus Conferences</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/themes/focus.css" />
+        <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="css/vendor/jquery.mobile.structure-1.4.5.min.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div data-role="page" id="speaker-detail-page">
+            <div data-role="header" data-position="fixed" data-add-back-btn="true">
+                <h1>Speaker Details</h1>
+            </div><!-- /header -->
+            <div role="main" class="ui-content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <div class="ui-body">
+                            <img src="images/event-logo.png" style="max-width:100%;" />
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <div class="ui-body">
+                            <img src="images/focus-education.png" style="max-width:100%;" />
+                        </div>
+                    </div>
+                </div>
+                <div id="speaker">
+                    <h2 id="name"></h2>
+                    <img id="photo" src="images/dot.gif" style="display:block;max-width:200px;" />
+                    <p id="profile"></p>
+                </div>
+                <ul data-role="listview" data-inset="true" id="conferences-list"></ul>
+            </div><!-- /content -->
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="index.html" data-icon="calendar">Home</a></li>
+                        <li><a href="conferences.html" data-icon="bars">Conferences</a></li>
+                        <li><a href="#" data-icon="user" class="ui-btn-active">Speakers</a></li>
+                        <li><a href="share.html" data-icon="action">Share</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+        </div><!-- /page -->
+    </body>
+</html>

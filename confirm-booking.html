@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Focus Conferences</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/themes/focus.css" />
+        <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="css/vendor/jquery.mobile.structure-1.4.5.min.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div data-role="page" id="confirm-booking-page">
+            <div data-role="header" data-position="fixed" data-add-back-btn="true">
+                <h1>Confirm Booking</h1>
+            </div><!-- /header -->
+            <div role="main" class="ui-content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <div class="ui-body">
+                            <img src="images/event-logo.png" style="max-width:100%;" />
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <div class="ui-body">
+                            <img src="images/focus-education.png" style="max-width:100%;" />
+                        </div>
+                    </div>
+                </div>
+                <div data-role="popup" id="popup-message" data-overlay-theme="b">
+                    <div data-role="header" id="popup-message-header"><h3></h3></div>
+                    <div data-role="content" id="popup-message-content"><p></p><a href="#" data-role="button" data-inline="true" data-rel="back">OK</a></div>
+                </div>
+                <h2>Review and Confirm your Booking</h2>
+                <div id="company-details" style="display:none;">
+                    <div data-role="collapsible" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+                        <h3>Your Details</h3>
+                        <table data-role="table" id="company-table" class="ui-responsive table-stripe">
+                            <thead>
+                                <tr><th></th></tr>
+                                <tr><th></th></tr>
+                                <tr><th></th></tr>
+                                <tr><th></th></tr>
+                                <tr><th></th></tr>
+                                <tr><th></th></tr>
+                                <tr><th></th></tr>
+                                <tr><th></th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Organisation Name:</strong> <span id="company-organisation"></span></td></tr>
+                                <tr><td><strong>Address 1:</strong> <span id="company-address1"></span></td></tr>
+                                <tr><td><strong>Address 2:</strong> <span id="company-address2"></span></td></tr>
+                                <tr><td><strong>Town:</strong> <span id="company-town"></span></td></tr>
+                                <tr><td><strong>County:</strong> <span id="company-county"></span></td></tr>
+                                <tr><td><strong>Postcode:</strong> <span id="company-postcode"></span></td></tr>
+                                <tr><td><strong>Phone:</strong> <span id="company-phone"></span></td></tr>
+                                <tr><td><strong>Email:</strong> <span id="company-email"></span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>                    
+                </div>
+                <div id="order-details" style="display:none;">
+                    <div data-role="collapsible" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+                        <h3>Order Details</h3>
+                        <table data-role="table" id="event-table" class="ui-responsive table-stripe">
+                            <thead>
+                                <tr><th></th></tr>
+                                <tr><th></th></tr>
+                                <tr><th></th></tr>
+                                <tr><th></th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Event Name:</strong> <span id="event-name"></span></td></tr>
+                                <tr><td><strong>Cost per Delegate:</strong> <span id="event-cost"></span></td></tr>
+                                <tr><td><strong>Number of Delegates:</strong> <span id="event-delegates"></span></td></tr>
+                                <tr><td><strong>Total Order Cost:</strong> <span id="event-total"></span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="confirmed-delegates" style="display:none;">
+                    <div data-role="collapsible" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+                        <h3>Confirmed Delegates</h3>
+                        <table data-role="table" id="confirmed-table" class="ui-responsive table-stripe">
+                            <thead>
+                                <tr><th></th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td></td></tr>
+                            </tbody>
+                        </table>
+                    </div>                    
+                </div>
+                <div id="confirm" style="display:none;">
+                    <form id="confirm-booking-form" class="ui-body" data-ajax="false">                    
+                        <input type="hidden" name="merchant" id="merchant" value="" />
+                        <input type="hidden" name="total" id="total" value="" />
+                        <input type="hidden" name="amount" id="amount" value="" />
+                        <input type="hidden" name="orderref" id="orderref" value="" />
+                        <input type="hidden" name="address" id="address" value="" />
+                        <input type="hidden" name="town" id="town" value="" />
+                        <input type="hidden" name="county" id="county" value="" />
+                        <input type="hidden" name="country" id="country" value="" />
+                        <input type="hidden" name="telephone" id="telephone" value="" />
+                        <input type="hidden" name="postcode" id="postcode" value="" />
+                        <input type="hidden" name="orderinfo" id="orderinfo" value="" />
+                        <input type="hidden" name="customeremail" id="customeremail" value="" />
+                        <input type="hidden" name="email" id="email" value="" />
+                        <input type="hidden" name="company" id="company" value="" />                    
+                        <button type="submit" id="submit" name="submit" class="ui-btn">Confirm Booking</button>
+                    </form>
+                </div>
+            </div><!-- /content -->
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="index.html" data-icon="calendar">Home</a></li>
+                        <li><a href="#" data-icon="bars" class="ui-btn-active">Conferences</a></li>
+                        <li><a href="speakers.html" data-icon="user">Speakers</a></li>
+                        <li><a href="share.html" data-icon="action">Share</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+        </div><!-- /page -->
+    </body>
+</html>

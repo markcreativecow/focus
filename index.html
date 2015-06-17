@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Focus Conferences</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/themes/focus.css" />
+        <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="css/vendor/jquery.mobile.structure-1.4.5.min.css" />
+        <link rel="stylesheet" href="css/plugins/jw-jqm-cal.css" />
+        <link rel="stylesheet" href="css/app.css" />
+    </head>
+    <body>
+        <div data-role="page" id="home-page">
+            <div role="main" class="ui-content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <div class="ui-body">
+                            <img src="images/event-logo.png" style="max-width:100%;" />
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <div class="ui-body">
+                            <img src="images/focus-education.png" style="max-width:100%;" />
+                        </div>
+                    </div>
+                </div>
+                <div id="calendar"></div>
+            </div><!-- /content -->
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#" data-icon="calendar" class="ui-btn-active">Home</a></li>
+                        <li><a href="conferences.html" data-icon="bars">Conferences</a></li>
+                        <li><a href="speakers.html" data-icon="user">Speakers</a></li>
+                        <li><a href="share.html" data-icon="action">Share</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+        </div><!-- /page -->
+        <!--script src="phonegap.js"></script>-->
+        <script src="js/vendor/jquery-1.11.1.min.js"></script>
+        <script src="js/vendor/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/plugins/jw-jqm-cal.js"></script>
+        <script src="js/app.js"></script>
+        <script>
+            $(document).on('pageinit', function(){
+                for (var i = 0; i < localStorage.length; i++)   {
+                    console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
+                }                
+            })
+            $(document).on('pageinit', '#home-page', function() {
+                focuseducation.calendarPage.init();
+            });
+            $(document).on('pageinit', '#conferences-page', function() {
+                focuseducation.conferencesPage.init();
+            });
+            $(document).on('pageinit', '#conference-detail-page', function() {
+                focuseducation.conferenceDetailPage.init();
+            });
+            $(document).on('pageinit', '#delegate-add-page', function() {
+                focuseducation.delegateAddPage.init();
+            });
+            $(document).on('pageinit', '#delegate-edit-page', function() {
+                focuseducation.delegateEditPage.init();
+            });
+            $(document).on('pageinit', '#delegates-page', function() {
+                focuseducation.delegatesPage.init();
+            });
+            $(document).on('pageinit', '#speakers-page', function() {
+                focuseducation.speakersPage.init();
+            });
+            $(document).on('pageinit', '#speaker-detail-page', function() {
+                focuseducation.speakerDetailPage.init();
+            });
+            $(document).on('pageinit', '#login-page', function() {
+                focuseducation.loginPage.init();
+            });
+            $(document).on('pageinit', '#confirm-booking-page', function() {
+                focuseducation.confirmBookingPage.init();
+            });
+        </script>
+    </body>
+</html>
