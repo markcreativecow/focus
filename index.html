@@ -38,17 +38,17 @@
                 </div><!-- /navbar -->
             </div><!-- /footer -->
         </div><!-- /page -->
-        <!--script src="phonegap.js"></script>-->
+        <script src="phonegap.js"></script>
         <script src="js/vendor/jquery-1.11.1.min.js"></script>
         <script src="js/vendor/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/plugins/jw-jqm-cal.js"></script>
         <script src="js/app.js"></script>
         <script>
-            $(document).on('pageinit', function(){
+            /* $(document).on('pageinit', function(){
                 for (var i = 0; i < localStorage.length; i++)   {
                     console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
                 }                
-            })
+            }); */
             $(document).on('pageinit', '#home-page', function() {
                 focuseducation.calendarPage.init();
             });
