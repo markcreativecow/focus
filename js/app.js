@@ -2,8 +2,7 @@ window.focuseducation = {};
 
 // App Settings
 focuseducation.settings = {
-    API_URL: 'http://localhost/focusconferences/api/',
-    API_KEY: '167b8601a7afcffd9bcf424adce3bf77779528b4'
+    API_URL: 'http://www.focus-education.co.uk/api/api/'
 };
 
 // Speakers
