@@ -957,21 +957,3 @@ focuseducation.confirmBookingPage  = (function(){
         init: init
     };
 })();
-// Share
-focuseducation.sharePage = (function(){
-    "use strict";
-    var init, initBinds, doWebsiteView;
-    doWebsiteView = function(e) {
-        e.preventDefault();
-	window.open(encodeURI(this.href), '_system');
-    };
-    initBinds = function () {
-        $('#share-page').on('click', '.view-website-button', doWebsiteView);
-    };
-    init = function() {
-        initBinds();
-    };
-    return {
-        init: init
-    };
-})();
