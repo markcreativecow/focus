@@ -291,7 +291,7 @@ focuseducation.conferencesPage = (function(){
 // Calendar
 focuseducation.calendarPage = (function(){
     "use strict";
-    var init, initBinds, showLoader, hideLoader, renderCalendar, getCalendar, getCalendarSuccess, getCalendarFailure, doConferenceView;
+    var init, initBinds, setupAjax, showLoader, hideLoader, renderCalendar, getCalendar, getCalendarSuccess, getCalendarFailure, doConferenceView;
     showLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('show', {
@@ -350,11 +350,22 @@ focuseducation.calendarPage = (function(){
             .done(getCalendarSuccess)
             .fail(getCalendarFailure);
     };
+    setupAjax = function () {
+        $.ajaxSetup({
+            timeout: 1, // Microseconds, for the laughs.  Guaranteed timeout.
+            error: function(request, status, maybe_an_exception_object) {
+                if(status == 'timeout') {
+                    alert('You don\'t appear to have an Internet connection');
+                }
+            }
+        });
+    };
     initBinds = function () {
         $('#home-page').on('click', '.view-conference-button', doConferenceView);
     };
     init = function() {
         getCalendar();
+        setupAjax();
         initBinds();
     };
     return {
