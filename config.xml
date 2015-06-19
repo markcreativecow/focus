@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.focuseducation.publications.3UQ7683972" version="1.0">
-    <name>Focus Conferences</name>
+    <name>Conferences</name>
     <description></description>
 
     <preference name="permissions" value="none"/>
