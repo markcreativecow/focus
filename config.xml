@@ -3,6 +3,14 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.focuseducation.publications.3UQ7683972" version="1.0">
     <name>Conferences</name>
     <description></description>
+    
+    <gap:plugin name="com.phonegap.plugin.statusbar" version="1.0.0" />
+
+    <gap:config-file platform="ios" parent="UIStatusBarHidden"><true/></gap:config-file>
+    <gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance"><false/></gap:config-file>
+    <gap:config-file platform="ios" parent="CFBundleShortVersionString"><string>100</string></gap:config-file>
+    
+    <preference name="StatusBarOverlaysWebView" value="false" />
 
     <preference name="permissions" value="none"/>
 
@@ -26,9 +34,6 @@
     <preference name="phonegap-version" value="3.5.0" />
     -->
     <preference name="phonegap-version" value="3.7.0" />
-    
-    <gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
-    <preference name="StatusBarOverlaysWebView" value="false" />
 
     <!-- Define app icon for each platform. -->
     <icon src="res/icon/ios/appicon-Small-40.png" gap:platform="ios" width="40" height="40" />
@@ -59,10 +64,6 @@
     <gap:splash src="res/screen/ios/Default-Portrait.png" gap:platform="ios" width="760"  height="1024"/>
     <gap:splash src="res/screen/ios/Default-Portrait@2x.png" gap:platform="ios" width="1536"  height="2048"/>
     <gap:splash src="res/screen/ios/Default-Portrait-736h@3x.png" gap:platform="ios" width="1242"  height="2208"/>
-
-    <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-        <string>100</string>
-    </gap:config-file>
 
     <!--
     Define access to external domains.

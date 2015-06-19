@@ -1146,7 +1146,7 @@ focuseducation.sharePage = (function(){
     
     doWebsiteView = function(e) {
         e.preventDefault();
-	window.open(this.href, "_system");
+	window.open(this.href, '_system', 'location=no');
     };
 
     initBinds = function () {
