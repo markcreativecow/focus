@@ -9,7 +9,7 @@ focuseducation.settings = {
 focuseducation.speakerDetailPage = (function(){
     "use strict";
     // Define your library strictly...
-    var init, showLoader, hideLoader, getSpeaker, getSpeakerSuccess, getSpeakerFailure, getConferences, getConferencesSuccess, getConferencesFailure;
+    var init, initBinds, showLoader, hideLoader, doSpeakerView, getSpeaker, getSpeakerSuccess, getSpeakerFailure, getConferences, getConferencesSuccess, getConferencesFailure;
 
     showLoader = function() {
         var interval = setInterval(function(){
@@ -26,6 +26,14 @@ focuseducation.speakerDetailPage = (function(){
             $.mobile.loading('hide');
             clearInterval(interval);
         }, 1);
+    };
+
+    doSpeakerView = function(e) {
+        e.preventDefault();
+        var id;
+        id = $(this).attr('data-id');
+        localStorage.setItem('speaker_id', id);
+        $.mobile.changePage(this.href);
     };
 
     getSpeakerFailure = function(jqXHR, textStatus, errorThrown) {
@@ -78,9 +86,14 @@ focuseducation.speakerDetailPage = (function(){
             .fail(getConferencesFailure);
     };
 
+    initBinds = function () {
+        $('#speaker-detail-page').on('click', '.view-speaker-button', doSpeakerView);
+    };
+
     init = function() {
         getConferences();
         getSpeaker();
+        initBinds();
     };
 
     return {
@@ -1119,6 +1132,28 @@ focuseducation.confirmBookingPage  = (function(){
 
     init = function() {
         getCompany();
+        initBinds();
+    };
+
+    return {
+        init: init
+    };
+})();
+
+focuseducation.sharePage = (function(){
+    "use strict";
+    var init, initBinds, doWebsiteView;
+    
+    doWebsiteView = function(e) {
+        e.preventDefault();
+	window.open(this.href, "_system");
+    };
+
+    initBinds = function () {
+        $('#share-page').on('click', '.view-website-button', doWebsiteView);
+    };
+
+    init = function() {
         initBinds();
     };
 
