@@ -1,16 +1,12 @@
 window.focuseducation = {};
-
 // App Settings
 focuseducation.settings = {
     API_URL: 'http://www.focus-education.co.uk/api/api/'
 };
-
 // Speakers
 focuseducation.speakerDetailPage = (function(){
     "use strict";
-    // Define your library strictly...
     var init, initBinds, showLoader, hideLoader, doSpeakerView, getSpeaker, getSpeakerSuccess, getSpeakerFailure, getConferences, getConferencesSuccess, getConferencesFailure;
-
     showLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('show', {
@@ -20,14 +16,12 @@ focuseducation.speakerDetailPage = (function(){
             clearInterval(interval);
         }, 1);
     };
-
     hideLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('hide');
             clearInterval(interval);
         }, 1);
     };
-
     doSpeakerView = function(e) {
         e.preventDefault();
         var id;
@@ -35,7 +29,6 @@ focuseducation.speakerDetailPage = (function(){
         localStorage.setItem('speaker_id', id);
         $.mobile.changePage(this.href);
     };
-
     getSpeakerFailure = function(jqXHR, textStatus, errorThrown) {
         hideLoader();
         var response = JSON.parse(jqXHR.responseText);
@@ -43,14 +36,12 @@ focuseducation.speakerDetailPage = (function(){
         $('#speakerErrorContent p').html(response.error);
         $('#speakerError').popup('open');
     };
-
     getSpeakerSuccess = function(data, textStatus, jqXHR) {
         $('#name').text(data.title + ' ' + data.forename + ' ' + data.surname);
         $('#photo').attr('src', 'http://www.focus-education.co.uk/events/events/imagedisplayer.aspx?speakerid=' + data.userid);
         $('#profile').html(data.penpick.replace(/\r\n|\n|\r/g, '<br />'));
         hideLoader();
     };
-
     getSpeaker = function() {
         var id = localStorage.getItem('speaker_id');
         showLoader();
@@ -58,7 +49,6 @@ focuseducation.speakerDetailPage = (function(){
             .done(getSpeakerSuccess)
             .fail(getSpeakerFailure);
     };
-
     getConferencesFailure = function(jqXHR, textStatus, errorThrown) {
         var conferences = [];
         $('#conferences-list li').remove();
@@ -67,7 +57,6 @@ focuseducation.speakerDetailPage = (function(){
         $('#conferences-list').html(conferences);
         $('#conferences-list').listview('refresh');
     };
-
     getConferencesSuccess = function(data, textStatus, jqXHR) {
         var conferences = [];
         $('#conferences-list li').remove();
@@ -78,35 +67,28 @@ focuseducation.speakerDetailPage = (function(){
         $('#conferences-list').html(conferences);
         $('#conferences-list').listview('refresh');
     };
-
     getConferences = function() {
         var id = localStorage.getItem('speaker_id');
         $.getJSON(focuseducation.settings.API_URL + 'speakerconferences/userid/' + id, function() {})
             .done(getConferencesSuccess)
             .fail(getConferencesFailure);
     };
-
     initBinds = function () {
         $('#speaker-detail-page').on('click', '.view-speaker-button', doSpeakerView);
     };
-
     init = function() {
         getConferences();
         getSpeaker();
         initBinds();
     };
-
     return {
         init: init
     };
 })();
-
 // Speakers
 focuseducation.speakersPage = (function(){
     "use strict";
-    // Define your library strictly...
     var init, initBinds, showLoader, hideLoader, doSpeakerView, doDividers, getSpeakers, getSpeakersSuccess, getSpeakersFailure;
-
     showLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('show', {
@@ -116,14 +98,12 @@ focuseducation.speakersPage = (function(){
             clearInterval(interval);
         }, 1);
     };
-
     hideLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('hide');
             clearInterval(interval);
         }, 1);
     };
-
     doDividers = function() {
         $('#speakers-list').listview({
             autodividers: true,
@@ -133,7 +113,6 @@ focuseducation.speakersPage = (function(){
         });
         $('#speakers-list').listview('refresh');
     };
-
     doSpeakerView = function(e) {
         e.preventDefault();
         var id;
@@ -141,12 +120,9 @@ focuseducation.speakersPage = (function(){
         localStorage.setItem('speaker_id', id);
         $.mobile.changePage(this.href);
     };
-
     getSpeakersFailure = function(jqXHR, textStatus, errorThrown) {
         hideLoader();
-
     };
-
     getSpeakersSuccess = function(data, textStatus, jqXHR) {
         var speakers = [];
         $('#speakers-list li').remove();
@@ -158,34 +134,27 @@ focuseducation.speakersPage = (function(){
         doDividers();
         hideLoader();
     };
-
     getSpeakers = function() {
         showLoader();
         $.getJSON(focuseducation.settings.API_URL + 'speakers', function() {})
             .done(getSpeakersSuccess)
             .fail(getSpeakersFailure);
     };
-
     initBinds = function () {
         $('#speakers-page').on('click', '.view-speaker-button', doSpeakerView);
     };
-
     init = function() {
         getSpeakers();
         initBinds();
     };
-
     return {
         init: init
     };
 })();
-
 // Conferences
 focuseducation.conferenceDetailPage = (function(){
     "use strict";
-    // Define your library strictly...
     var init, initBinds, showLoader, hideLoader, doSpeakerView, doConferenceView, doBookConferenceView, getConference, getConferenceSuccess, getConferenceFailure;
-
     showLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('show', {
@@ -195,14 +164,12 @@ focuseducation.conferenceDetailPage = (function(){
             clearInterval(interval);
         }, 1);
     };
-
     hideLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('hide');
             clearInterval(interval);
         }, 1);
     };
-
     doSpeakerView = function(e) {
         e.preventDefault();
         var id;
@@ -210,7 +177,6 @@ focuseducation.conferenceDetailPage = (function(){
         localStorage.setItem('speaker_id', id);
         $.mobile.changePage(this.href);
     };
-
     doConferenceView = function(e) {
         e.preventDefault();
         var id;
@@ -218,7 +184,6 @@ focuseducation.conferenceDetailPage = (function(){
         localStorage.setItem('conference_id', id);
         $.mobile.changePage(this.href);
     };
-
     doBookConferenceView = function(e) {
         e.preventDefault();
         var id;
@@ -226,18 +191,13 @@ focuseducation.conferenceDetailPage = (function(){
         localStorage.setItem('conference_id', id);
         $.mobile.changePage(this.href);
     };
-
     getConferenceFailure = function(jqXHR, textStatus, errorThrown) {
         hideLoader();
-
     };
-
     getConferenceSuccess = function(data, textStatus, jqXHR) {
-        // Populate the designated fields
         $('#name').text(data.title);
         $('#reference').text(data.conferencecode);
         $('#dates').text(data.dates);
-        // $('#date').text(conference.date);
         $('#speaker').html('<a href="speaker-detail.html" class="view-speaker-button" data-id="' + data.userid + '">' + data.speaker + '</a>');
         $('#cost').html(data.cost);
         $('#venue').text(data.venueline);
@@ -247,7 +207,6 @@ focuseducation.conferenceDetailPage = (function(){
         $('#conference').css('display', 'block');
         hideLoader();
     };
-
     getConference = function() {
         var id = localStorage.getItem('conference_id');
         showLoader();
@@ -255,29 +214,23 @@ focuseducation.conferenceDetailPage = (function(){
             .done(getConferenceSuccess)
             .fail(getConferenceFailure);
     };
-
     initBinds = function () {
         $('#conference-detail-page').on('click', '.view-speaker-button', doSpeakerView);
         $('#conference-detail-page').on('click', '.view-conference-button', doConferenceView);
         $('#conference-detail-page').on('click', '.book-conference-button', doBookConferenceView);
     };
-
     init = function() {
         getConference();
         initBinds();
     };
-
     return {
         init: init
     };
 })();
-
 // Conferences
 focuseducation.conferencesPage = (function(){
     "use strict";
-    // Define your library strictly...
     var init, initBinds, showLoader, hideLoader, doConferenceView, getConferences, getConferencesSuccess, getConferencesFailure;
-
     showLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('show', {
@@ -287,14 +240,12 @@ focuseducation.conferencesPage = (function(){
             clearInterval(interval);
         }, 1);
     };
-
     hideLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('hide');
             clearInterval(interval);
         }, 1);
     };
-
     doConferenceView = function(e) {
         e.preventDefault();
         var id;
@@ -302,12 +253,9 @@ focuseducation.conferencesPage = (function(){
         localStorage.setItem('conference_id', id);
         $.mobile.changePage(this.href);
     };
-
     getConferencesFailure = function(jqXHR, textStatus, errorThrown) {
         hideLoader();
-
     };
-
     getConferencesSuccess = function(data, textStatus, jqXHR) {
         var date = '';
         var conferences = [];
@@ -323,35 +271,27 @@ focuseducation.conferencesPage = (function(){
         $('#conferences-list').listview('refresh');
         hideLoader();
     };
-
     getConferences = function() {
         showLoader();
         $.getJSON(focuseducation.settings.API_URL + 'conferences', function() {})
             .done(getConferencesSuccess)
             .fail(getConferencesFailure);
     };
-
     initBinds = function () {
         $('#conferences-page').on('click', '.view-conference-button', doConferenceView);
     };
-
     init = function() {
         getConferences();
         initBinds();
     };
-
     return {
         init: init
     };
 })();
-
 // Calendar
 focuseducation.calendarPage = (function(){
     "use strict";
-    // Define your library strictly...
-    var init, initBinds, showLoader, hideLoader,
-        renderCalendar, getCalendar, getCalendarSuccess, getCalendarFailure, doConferenceView;
-
+    var init, initBinds, showLoader, hideLoader, renderCalendar, getCalendar, getCalendarSuccess, getCalendarFailure, doConferenceView;
     showLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('show', {
@@ -361,14 +301,12 @@ focuseducation.calendarPage = (function(){
             clearInterval(interval);
         }, 1);
     };
-
     hideLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('hide');
             clearInterval(interval);
         }, 1);
     };
-
     doConferenceView = function(e) {
         e.preventDefault();
         var id;
@@ -376,13 +314,11 @@ focuseducation.calendarPage = (function(){
         localStorage.setItem('conference_id', id);
         $.mobile.changePage(this.href);
     };
-
     renderCalendar = function(dates) {
         $('#calendar').jqmCalendar({
             events : dates
         });
     };
-
     getCalendarFailure = function(jqXHR, textStatus, errorThrown) {
         hideLoader();
         var response = JSON.parse(jqXHR.responseText);
@@ -390,16 +326,11 @@ focuseducation.calendarPage = (function(){
         $('#speakerErrorContent p').html(response.error);
         $('#speakerError').popup('open');
     };
-
     getCalendarSuccess = function(data, textStatus, jqXHR) {
-        // Create a blank date object
         var date = {};
-        // Create a blank dates array
         var dates = [];
         $.each(data, function(i, conference) {
-            // Split the returned MySQL datetimestamp
             var t = conference.sortdate.split(/[- :]/);
-            // Create the date object
             var date = {
                 'summary' : '<h2>' + conference.title + '</h2><p><strong>Time:</strong> ' + t[3] + ':' + t[4] + '</p><p><strong>Location:</strong> ' + conference.venue + '</p><p><strong>Date:</strong> ' + conference.startdate + '</p>',
                 'begin' : new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]),
@@ -408,43 +339,32 @@ focuseducation.calendarPage = (function(){
                 'data-id' : conference.id,
                 'full-date' : conference.date
             }
-            // Push the date object onto the dates array
             dates.push(date);
         });
         renderCalendar(dates);
         hideLoader();
     };
-
     getCalendar = function() {
         showLoader();
         $.getJSON(focuseducation.settings.API_URL + 'conferences', function() {})
             .done(getCalendarSuccess)
             .fail(getCalendarFailure);
     };
-
     initBinds = function () {
         $('#home-page').on('click', '.view-conference-button', doConferenceView);
     };
-
     init = function() {
         getCalendar();
         initBinds();
     };
-
     return {
         init: init
     };
 })();
-
 // Delegates
 focuseducation.delegateAddPage = (function(){
     "use strict";
-    // Define your library strictly...
-    var init, initBinds, showLoader, hideLoader,
-        doDelegateAddSubmit, doDelegateAdd, doDelegateAddSuccess, doDelegateAddFailure, doDelegateAddErrors,
-        getJobTitlesSuccess, getTitlesSuccess, getDietsSuccess,
-        getDelegates;
-
+    var init, initBinds, showLoader, hideLoader, doDelegateAddSubmit, doDelegateAdd, doDelegateAddSuccess, doDelegateAddFailure, doDelegateAddErrors, getJobTitlesSuccess, getTitlesSuccess, getDietsSuccess, getDelegates;
     showLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('show', {
@@ -454,14 +374,12 @@ focuseducation.delegateAddPage = (function(){
             clearInterval(interval);
         }, 1);
     };
-
     hideLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('hide');
             clearInterval(interval);
         }, 1);
     };
-
     getJobTitlesSuccess = function(data, textStatus, jqXHR) {
         $.each(data, function(i, jobtitle) {
             $('select[name="jobtitle"]').append($('<option></option>').attr('value', jobtitle.jobtitleid).text(jobtitle.jobtitledesc));
@@ -469,7 +387,6 @@ focuseducation.delegateAddPage = (function(){
             $('select[name="jobtitle"]').selectmenu('refresh');
         });
     };
-
     getTitlesSuccess = function(data, textStatus, jqXHR) {
         $.each(data, function(i, title) {
             $('select[name="title"]').append($('<option></option>').attr('value', title.titleid).text(title.titledesc_short));
@@ -477,7 +394,6 @@ focuseducation.delegateAddPage = (function(){
             $('select[name="title"]').selectmenu('refresh');
         });
     };
-
     getDietsSuccess = function(data, textStatus, jqXHR) {
         $.each(data, function(i, diet) {
             $('select[name="diet"]').append($('<option></option>').attr('value', diet.dietid).text(diet.dietdesc));
@@ -485,7 +401,6 @@ focuseducation.delegateAddPage = (function(){
             $('select[name="diet"]').selectmenu('refresh');
         });
     };
-
     getDelegates = function() {
         showLoader();
         var dataDiets = $.getJSON(focuseducation.settings.API_URL + 'diets');
@@ -499,27 +414,22 @@ focuseducation.delegateAddPage = (function(){
             $('#delegate').css('display', 'block');
         });
     };
-
     doDelegateAddErrors = function(header, content) {
         $('#popup-message-header h3').text(header);
         $('#popup-message-content p').text(content);
         $('#popup-message').popup('open');
     };
-
     doDelegateAddFailure = function(jqXHR, textStatus, errorThrown) {
         hideLoader();
         var response = JSON.parse(jqXHR.responseText);
         doDelegateAddErrors('Error', response.error);
     };
-
     doDelegateAddSuccess = function(data, textStatus, jqXHR) {
         hideLoader();
         $.mobile.changePage('delegates.html');        
     };
-
    doDelegateAdd = function() {
         var user_id = localStorage.getItem('user_id');
-
         var forename = $('#forename').val(),
             surname = $('#surname').val(),
             title = $('#title').val(),
@@ -530,7 +440,6 @@ focuseducation.delegateAddPage = (function(){
             mobile = $('#mobile').val(),
             email = $('#email').val(),
             main = $('#main').is(':checked') ? 1 : 0;
-
         var data = {
             forename: forename,
             surname: surname,
@@ -544,7 +453,6 @@ focuseducation.delegateAddPage = (function(){
             customerid: user_id,
             main: main
         }
-
         if(forename.length > 0 && surname.length > 0 && phone1.length > 0 && email.length > 0) {
             showLoader();
             $.ajax({
@@ -559,35 +467,25 @@ focuseducation.delegateAddPage = (function(){
             doDelegateAddErrors('Error', 'Please complete all the required fields');
         }
     };
-
     doDelegateAddSubmit = function(e) {
         e.preventDefault();
         doDelegateAdd();
     };
-
     initBinds = function () {
         $('#delegate-add-form').on('submit', doDelegateAddSubmit);
     };
-
     init = function() {
         getDelegates();
         initBinds();
     };
-
     return {
         init: init
     };
 })();
-
 // Delegates Edit
 focuseducation.delegateEditPage = (function(){
     "use strict";
-    // Define your library strictly...
-    var init, initBinds, showLoader, hideLoader,
-        doDelegateEditSubmit, doDelegateEdit, doDelegateEditSuccess, doDelegateEditFailure, doDelegateEditErrors,
-        getJobTitlesSuccess, getTitlesSuccess, getDietsSuccess,
-        getDelegates, getDelegatesSuccess;
-
+    var init, initBinds, showLoader, hideLoader, doDelegateEditSubmit, doDelegateEdit, doDelegateEditSuccess, doDelegateEditFailure, doDelegateEditErrors, getJobTitlesSuccess, getTitlesSuccess, getDietsSuccess, getDelegates, getDelegatesSuccess;
     showLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('show', {
@@ -597,14 +495,12 @@ focuseducation.delegateEditPage = (function(){
             clearInterval(interval);
         }, 1);
     };
-
     hideLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('hide');
             clearInterval(interval);
         }, 1);
     };
-
     getJobTitlesSuccess = function(data, textStatus, jqXHR) {
         $.each(data, function(i, jobtitle) {
             $('select[name="jobtitle"]').append($('<option></option>').attr('value', jobtitle.jobtitleid).text(jobtitle.jobtitledesc));
@@ -612,7 +508,6 @@ focuseducation.delegateEditPage = (function(){
             $('select[name="jobtitle"]').selectmenu('refresh');
         });
     };
-
     getTitlesSuccess = function(data, textStatus, jqXHR) {
         $.each(data, function(i, title) {
             $('select[name="title"]').append($('<option></option>').attr('value', title.titleid).text(title.titledesc_short));
@@ -620,7 +515,6 @@ focuseducation.delegateEditPage = (function(){
             $('select[name="title"]').selectmenu('refresh');
         });
     };
-
     getDietsSuccess = function(data, textStatus, jqXHR) {
         $.each(data, function(i, diet) {
             $('select[name="diet"]').append($('<option></option>').attr('value', diet.dietid).text(diet.dietdesc));
@@ -628,7 +522,6 @@ focuseducation.delegateEditPage = (function(){
             $('select[name="diet"]').selectmenu('refresh');
         });
     };
-
     getDelegatesSuccess = function(data, textStatus, jqXHR) {
         $('input[name="forename"]').val(data.Forename);
         $('input[name="surname"]').val(data.Surname);
@@ -637,7 +530,6 @@ focuseducation.delegateEditPage = (function(){
         $('input[name="mobile"]').val(data.Mobile);
         $('input[name="email"]').val(data.Email);
     };
-
     getDelegates = function() {
         var user_id = localStorage.getItem('user_id');
         showLoader();
@@ -654,26 +546,21 @@ focuseducation.delegateEditPage = (function(){
             $('#delegate').css('display', 'block');
         });
     };
-
     doDelegateEditErrors = function(header, content) {
         $('#popup-message-header h3').text(header);
         $('#popup-message-content p').text(content);
         $('#popup-message').popup('open');
     };
-
     doDelegateEditFailure = function(jqXHR, textStatus, errorThrown) {
         hideLoader();
         var response = JSON.parse(jqXHR.responseText);
         doLoginErrors('Error', response.error);
     };
-
     doDelegateEditSuccess = function(data, textStatus, jqXHR) {
         hideLoader();
     };
-
    doDelegateEdit = function() {
         var user_id = localStorage.getItem('user_id');
-
         var forename = $('#forename').val(),
             surname = $('#surname').val(),
             title = $('#title').val(),
@@ -684,7 +571,6 @@ focuseducation.delegateEditPage = (function(){
             mobile = $('#mobile').val(),
             email = $('#email').val(),
             main = $('#main').val();
-
         var data = {
             forename: forename,
             surname: surname,
@@ -698,7 +584,6 @@ focuseducation.delegateEditPage = (function(){
             customerid: user_id,
             main: main
         }
-
         if(forename.length > 0 && surname.length > 0 && phone1.length > 0 && email.length > 0) {
             showLoader();
             $.ajax({
@@ -713,36 +598,25 @@ focuseducation.delegateEditPage = (function(){
             doDelegateEditErrors('Error', 'Please complete all the required fields');
         }
     };
-
     doDelegateEditSubmit = function(e) {
         e.preventDefault();
         doDelegateEdit();
     };
-
     initBinds = function () {
         $('#delegate-edit-form').on('submit', doDelegateEditSubmit);
     };
-
     init = function() {
         getDelegates();
         initBinds();
     };
-
     return {
         init: init
     };
 })();
-
 // Delegates
 focuseducation.delegatesPage = (function(){
     "use strict";
-    // Define your library strictly...
-    var init, initBinds, showLoader, hideLoader,
-        doBookingSubmit, doBooking, doBookingErrors, doBookingConfirmView,
-        doDelegateEditView, doDelegateAddView,
-        getConference, getConferenceSuccess, getConferenceFailure,
-        getDelegates, getDelegatesSuccess, getDelegatesFailure;
-
+    var init, initBinds, showLoader, hideLoader, doBookingSubmit, doBooking, doBookingErrors, doBookingConfirmView, doDelegateEditView, doDelegateAddView, getConference, getConferenceSuccess, getConferenceFailure, getDelegates, getDelegatesSuccess, getDelegatesFailure;
     showLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('show', {
@@ -752,24 +626,20 @@ focuseducation.delegatesPage = (function(){
             clearInterval(interval);
         }, 1);
     };
-
     hideLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('hide');
             clearInterval(interval);
         }, 1);
     };
-
     doBookingConfirmView = function() {
         $.mobile.changePage('confirm-booking.html');
     };
-
     doBookingErrors = function(header, content) {
         $('#popup-message-header h3').text(header);
         $('#popup-message-content p').text(content);
         $('#popup-message').popup('open');
     };
-
     doBooking = function() {
         var attendees = [];
         $.each($('input[name="delegate"]'), function() {
@@ -801,12 +671,10 @@ focuseducation.delegatesPage = (function(){
             doBookingErrors('Error', 'Please select at least one of your delegates to attend this conference.');
         }
     };
-
     doBookingSubmit = function(e) {
         e.preventDefault();
         doBooking();
     };
-
     doDelegateEditView = function(e) {
         e.preventDefault();
         var id;
@@ -814,16 +682,12 @@ focuseducation.delegatesPage = (function(){
         localStorage.setItem('delegate_id', id);
         $.mobile.changePage(this.href);
     };
-
     doDelegateAddView = function(e) {
         $.mobile.changePage(this.href);
     };
-
     getDelegatesFailure = function(jqXHR, textStatus, errorThrown) {
         hideLoader();
-
     };
-
     getDelegatesSuccess = function(data, textStatus, jqXHR) {
         var delegates = [];
         $.each(data, function(i, delegate) {
@@ -850,7 +714,6 @@ focuseducation.delegatesPage = (function(){
         $('#delegates').css('display', 'block');
         hideLoader();
     };
-
     getDelegates = function() {
         var user_id = localStorage.getItem('user_id');
         showLoader();
@@ -858,18 +721,14 @@ focuseducation.delegatesPage = (function(){
             .done(getDelegatesSuccess)
             .fail(getDelegatesFailure);
     };
-
     getConferenceFailure = function(jqXHR, textStatus, errorThrown) {
         hideLoader();
-
     };
-
     getConferenceSuccess = function(data, textStatus, jqXHR) {
         $('#name').text(data.title);
         $('#conference').css('display', 'block');
         hideLoader();
     };
-
     getConference = function() {
         var id = localStorage.getItem('conference_id');
         showLoader();
@@ -877,30 +736,24 @@ focuseducation.delegatesPage = (function(){
             .done(getConferenceSuccess)
             .fail(getConferenceFailure);
     };
-
     initBinds = function () {
         $('#delegates-page').on('click', '.edit-delegate-button', doDelegateEditView);
         $('#delegates-page').on('click', '.add-delegate-button', doDelegateAddView);
         $('#delegates-form').on('submit', doBookingSubmit);
     };
-
     init = function() {
         getConference();
         getDelegates();
         initBinds();
     };
-
     return {
         init: init
     };
 })();
-
 // Login
 focuseducation.loginPage  = (function(){
     "use strict";
-    // Define your library strictly...
     var init, initBinds, showLoader, hideLoader, doDelegatesView, doLoginSubmit, doLogin, doLoginSuccess, doLoginFailure, doLoginErrors;
-
     showLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('show', {
@@ -910,30 +763,25 @@ focuseducation.loginPage  = (function(){
             clearInterval(interval);
         }, 1);
     };
-
     hideLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('hide');
             clearInterval(interval);
         }, 1);
     };
-
     doDelegatesView = function() {
         $.mobile.changePage('delegates.html');
     };
-
     doLoginErrors = function(header, content) {
         $('#popup-message-header h3').text(header);
         $('#popup-message-content p').text(content);
         $('#popup-message').popup('open');
     };
-
     doLoginFailure = function(jqXHR, textStatus, errorThrown) {
         hideLoader();
         var response = JSON.parse(jqXHR.responseText);
         doLoginErrors('Error', response.error);
     };
-
     doLoginSuccess = function(data, textStatus, jqXHR) {
         var id, name;
         id = data.string[0];
@@ -943,7 +791,6 @@ focuseducation.loginPage  = (function(){
         hideLoader();
         doDelegatesView();
     };
-
     doLogin = function() {
         var data, username, password;
         username = $('#username').val();
@@ -966,35 +813,24 @@ focuseducation.loginPage  = (function(){
             doLoginErrors('Error', 'Please complete all the required fields');
         }
     };
-
     doLoginSubmit = function(e) {
         e.preventDefault();
         doLogin();
     };
-
     initBinds = function () {
         $('#login-form').on('submit', doLoginSubmit);
     };
-
     init = function() {
         initBinds();
     };
-
     return {
         init: init
     };
 })();
-
 // Login
 focuseducation.confirmBookingPage  = (function(){
     "use strict";
-    // Define your library strictly...
-    var init, initBinds, showLoader, hideLoader,
-    doBookingConfirmSubmit, doBookingConfirm, doBookingConfirmSuccess, doBookingConfirmFailure, doBookingConfirmErrors,
-    getCompany, getCompanySuccess,
-    getConferenceSuccess,
-    getConfirmedDelegates;
-
+    var init, initBinds, showLoader, hideLoader, doBookingConfirmSubmit, doBookingConfirm, doBookingConfirmSuccess, doBookingConfirmFailure, doBookingConfirmErrors, getCompany, getCompanySuccess, getConferenceSuccess, getConfirmedDelegates;
     showLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('show', {
@@ -1004,28 +840,23 @@ focuseducation.confirmBookingPage  = (function(){
             clearInterval(interval);
         }, 1);
     };
-
     hideLoader = function() {
         var interval = setInterval(function(){
             $.mobile.loading('hide');
             clearInterval(interval);
         }, 1);
     };
-
     doBookingConfirmErrors = function(header, content) {
         $('#popup-message-header h3').text(header);
         $('#popup-message-content p').text(content);
         $('#popup-message').popup('open');
     };
-
     doBookingConfirmFailure = function(jqXHR, textStatus, errorThrown) {
 
     };
-
     doBookingConfirmSuccess = function(data, textStatus, jqXHR) {
 
     };
-
     doBookingConfirm = function() {
         var data, delegates, conferenceid, customerid, totalcost, totaldiscount;
         delegates = JSON.parse(localStorage['attendees']);
@@ -1033,7 +864,6 @@ focuseducation.confirmBookingPage  = (function(){
         customerid = localStorage.getItem('user_id');
         totalcost = $('#total').val();
         totaldiscount = 0;
-
         data = {
             delegates: delegates,
             conferenceid: conferenceid,
@@ -1051,12 +881,10 @@ focuseducation.confirmBookingPage  = (function(){
         .done(doBookingConfirmSuccess)
         .fail(doBookingConfirmFailure);
     };
-
     doBookingConfirmSubmit = function(e) {
         e.preventDefault();
         doBookingConfirm();
     };
-
     getConfirmedDelegates = function() {
         var attendees = JSON.parse(localStorage['attendees']);
         $('#confirmed-table tbody tr').remove();
@@ -1064,27 +892,22 @@ focuseducation.confirmBookingPage  = (function(){
             $('#confirmed-table tbody').append('<tr><td><span id="title">' + attendee.titledesc + '</span> <span id="forename">' + attendee.forename + '</span> <span id="surname">' + attendee.surname + '</span></td></tr>');
         });
     };
-
     getConferenceSuccess = function(data, textStatus, jqXHR) {
         var attendees = JSON.parse(localStorage['attendees']);
         var count = attendees.length;
         var total = parseFloat(data.costperdelegateonline * count).toFixed(2);
-
         var vat_rate = parseFloat(data.vatrate);
         var vat_amount = parseFloat(Math.round(parseFloat(vat_rate) / 100 * parseFloat(total))).toFixed(2);
         var total_cost = parseFloat(Math.round(parseFloat(total) + parseFloat(vat_amount))).toFixed(2);
-
         $('#event-name').text(data.title);
         $('#event-cost').html('&pound;' + data.costperdelegateonline);
         $('#event-delegates').text(count);
         $('#event-total').html('&pound;' + total_cost + ' (inc. VAT at ' + vat_rate + '%)');
-
         // Hidden values
         $('#total').val(total_cost);
         $('#amount').val(total_cost.replace('.', ''));
         $('#orderinfo').val('Booking for conference ' + data.title + ' with Focus Education');
     };
-
     getCompanySuccess = function(data, textStatus, jqXHR) {
         $('#company-organisation').text(data.company);
         $('#company-address1').text(data.address1);
@@ -1096,7 +919,6 @@ focuseducation.confirmBookingPage  = (function(){
         $('#company-email').text(data.email);
         // Hidden values
         $('#merchant').val('focused14672');
-
         $('#address').val(data.address1 + ' ' + data.address2);
         $('#town').val(data.town);
         $('#county').val(data.county);
@@ -1107,7 +929,6 @@ focuseducation.confirmBookingPage  = (function(){
         $('#email').val(data.email);
         $('#company').val(data.company);
     };
-
     getCompany = function() {
         showLoader();
         var user_id = localStorage.getItem('user_id');
@@ -1125,38 +946,31 @@ focuseducation.confirmBookingPage  = (function(){
             $('#confirm').css('display', 'block');
         });
     };
-
     initBinds = function () {
         $('#confirm-booking-form').on('submit', doBookingConfirmSubmit);
     };
-
     init = function() {
         getCompany();
         initBinds();
     };
-
     return {
         init: init
     };
 })();
-
+// Share
 focuseducation.sharePage = (function(){
     "use strict";
     var init, initBinds, doWebsiteView;
-    
     doWebsiteView = function(e) {
         e.preventDefault();
-	window.open(this.href, '_system', 'location=no');
+	window.open(encodeURI(this.href), '_system');
     };
-
     initBinds = function () {
         $('#share-page').on('click', '.view-website-button', doWebsiteView);
     };
-
     init = function() {
         initBinds();
     };
-
     return {
         init: init
     };
