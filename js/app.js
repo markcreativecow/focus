@@ -853,10 +853,10 @@ focuseducation.confirmBookingPage  = (function(){
         $('#popup-message').popup('open');
     };
     doBookingConfirmFailure = function(jqXHR, textStatus, errorThrown) {
-
+        $.mobile.changePage('booking-failure.html');
     };
     doBookingConfirmSuccess = function(data, textStatus, jqXHR) {
-
+        $.mobile.changePage('booking-success.html');
     };
     doBookingConfirm = function() {
         var data, delegates, conferenceid, customerid, totalcost, totaldiscount;
