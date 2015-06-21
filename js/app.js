@@ -24,6 +24,7 @@ focuseducation.speakerDetailPage = (function(){
     };
     doSpeakerView = function(e) {
         e.preventDefault();
+        localStorage.removeItem('speaker_id');
         var id;
         id = $(this).attr('data-id');
         localStorage.setItem('speaker_id', id);
